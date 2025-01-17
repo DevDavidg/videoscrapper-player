@@ -1,5 +1,6 @@
 import React from "react";
 import "./VideoListComponent.css";
+import VideoSearcher from "../VideoSearcher/VideoSearcher";
 
 export type Video = {
   id: string;
@@ -17,6 +18,7 @@ const VideoListComponent: React.FC<VideoListProps> = ({ videos }) => {
     <div className="border-[1px] border-gray-300 w-1/2 h-[80%] rounded-l-[20px] p-[20px]">
       <div className="border-[1px] h-full rounded-[20px]">
         <span className="text-[1.3rem]">{`${videos.length} Videos`}</span>
+        <VideoSearcher />
         <ul className="h-full overflow-y-auto">
           {videos.map((video) => (
             <li

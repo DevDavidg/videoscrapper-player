@@ -1,7 +1,11 @@
+"use client";
+
 import VideoListComponent, {
   Video,
 } from "@/components/VideoListComponent/VideoListComponent";
 import VideoPlayerComponent from "@/components/VideoPlayerComponent/VideoPlayerComponent";
+import queryClient from "@/services/queryClient";
+import { QueryClientProvider } from "react-query";
 
 const videoArray: Video[] = [
   {
@@ -27,9 +31,11 @@ const actualVideo = videoArray[0];
 
 export default function Home() {
   return (
-    <main className="w-full h-screen flex items-center justify-center">
-      <VideoListComponent videos={videoArray} />
-      <VideoPlayerComponent video={actualVideo} />
-    </main>
+    <QueryClientProvider client={queryClient}>
+      <main className="w-full h-screen flex items-center justify-center">
+        <VideoListComponent videos={videoArray} />
+        <VideoPlayerComponent video={actualVideo} />
+      </main>
+    </QueryClientProvider>
   );
 }
